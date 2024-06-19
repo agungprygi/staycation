@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --watch ./bin/www -e js,ejs,html,json"
+    "start": "concurrently \"nodemon ./bin/www --ext js,ejs,html,json\" \"npm run ui\"",
+    "ui": "browser-sync start --config bs-config.js"
   },
   "dependencies": {
+    "browser-sync": "^3.0.2",
+    "concurrently": "^8.2.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
