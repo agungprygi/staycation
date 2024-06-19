@@ -1,5 +1,5 @@
 run-dev:
-	docker-compose -f "docker-compose.dev.yml" up --build --watch
+	docker-compose -f "docker-compose.dev.yml" up --build -d
 
 stop-dev:
 	docker-compose -f "docker-compose.dev.yml" down
