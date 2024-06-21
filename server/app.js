@@ -6,6 +6,10 @@ var logger = require('morgan');
 const methodOverride = require('method-override')
 const session = require('express-session');
 const flash = require('connect-flash');
+const dotenv = require('dotenv');
+
+//dotenv config
+dotenv.config();
 
 //connect mongoDB
 const mongoose = require('mongoose');
