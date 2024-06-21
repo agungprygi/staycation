@@ -6,6 +6,18 @@ var logger = require('morgan');
 const methodOverride = require('method-override')
 const session = require('express-session');
 const flash = require('connect-flash');
+const dotenv = require('dotenv');
+const cloudinary = require('cloudinary').v2;
+
+//dotenv config
+dotenv.config();
+
+//cloudinary config
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 //connect mongoDB
 const mongoose = require('mongoose');

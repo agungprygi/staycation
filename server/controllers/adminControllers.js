@@ -1,5 +1,6 @@
 const Category = require("../models/Category");
 const Bank =  require("../models/Bank")
+const cloudinary = require('cloudinary').v2;
 
 module.exports = {
   viewDashboard: (req, res) => {
@@ -77,7 +78,7 @@ module.exports = {
         message: alertMessage,
         status: alertStatus
       };
-      res.render("admin/bank/view-category", { 
+      res.render("admin/bank/view-bank", { 
         bank, 
         alert,
         title: "Staycation | Bank"
@@ -91,7 +92,11 @@ module.exports = {
   addBank: async (req, res) => {
     try {
       const { bankName, accountNumber, name } = req.body;
-      await Bank.create({ bankName, accountNumber, name});
+      const b64 = Buffer.from(req.file.buffer).toString('base64'); 
+      let dataURI = `data:${req.file.mimetype};base64,${b64}`;
+      const cldRes = await cloudinary.uploader.upload(dataURI);
+      console.log(cldRes.secure_url);
+      // await Bank.create({ bankName, accountNumber, name});
       req.flash('alertMessage', 'Success Add Bank');
       req.flash('alertStatus', 'success');
       res.redirect("/admin/bank");
