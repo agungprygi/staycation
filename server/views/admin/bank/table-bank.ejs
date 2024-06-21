@@ -18,9 +18,38 @@
                         <th>Bank Name</th>
                         <th>Account Number</th>
                         <th>Name</th>
+                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <% for(let i =0; i < bank.length; i++){ %>
+                    <tr>
+                      <td><%= i+1%></td>
+                      <td><%= bank[i].bankName %></td>
+                      <td><%= bank[i].accountNumber %></td>
+                      <td><%= bank[i].name %></td>
+                      <td><img src="<%= bank[i].imageUrl %>" alt="logo <%= bank[i].name %>" height="70px"></td>
+                      <td>
+                        <form
+                          action="/admin/bank/<%= bank[i].id %>?_method=DELETE"
+                          method="post"
+                        >
+                          <a
+                            type="button"
+                            class="btn btn-primary btn-sm button-update"
+                            data-id="<%= bank[i].id %>" data-bankname="<%= bank[i].bankName %>" data-accountnumber="<%= bank[i].accountNumber %>" data-name="<%= bank[i].name %>" data-image="<%= bank[i].imageUrl %>"
+                          >
+                            <i class="fas fa-edit"></i>
+                          </a>
+                          <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i>
+                          </button>
+                        </form>
+                      </td>
+                    </tr>
+                    <%} %>
+                  </tbody>
             </table>
         </div>
     </div>
