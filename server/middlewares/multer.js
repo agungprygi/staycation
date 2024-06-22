@@ -51,6 +51,14 @@ const cloudinaryUpload = multer({
   }
 }).single("image")
 
+const cloudinaryMultiUpload = multer({
+  storage: cloudinaryStorage,
+  limits: { fileSize: 1000000 },
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  }
+}).array("image", 12)
+
 // // Check file Type
 function checkFileType(file, cb) {
 
@@ -68,4 +76,4 @@ function checkFileType(file, cb) {
   }
 }
 
-module.exports = { cloudinaryUpload, uploadMultiple, upload };
+module.exports = { cloudinaryUpload, cloudinaryMultiUpload, uploadMultiple, upload };
