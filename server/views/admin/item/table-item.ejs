@@ -13,6 +13,39 @@
                             <th>Action</th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <% items.forEach((item, index) => { %>
+                            <tr>
+                                <td width="2%"><%= index + 1 %></td>
+                                <td width="40%"><%= item.title %></td>
+                                <td><%= item.price %></td>
+                                <td><%= item.country %></td>
+                                <td><%= item.city %></td>
+                                <td width="15%">
+                                    <form
+                                    action="/admin/item/<%= item.id %>?_method=DELETE"
+                                    method="post"
+                                  >
+                                    <a
+                                      type="button"
+                                      class="btn btn-info btn-sm button-show"
+                                      ><i class="fas fa-image"></i></a>
+                                    <a type="button" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> </a>
+                                    <a
+                                      type="button"
+                                      class="btn btn-primary btn-sm button-update"
+                                      data-id="<%= item.id %>" data-bankname="<%= item.bankName %>" data-accountnumber="<%= item.accountNumber %>" data-name="<%= item.name %>" data-image="<%= item.imageUrl %>"
+                                    >
+                                      <i class="fas fa-edit"></i>
+                                    </a>
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash"></i>
+                                    </button>
+                                  </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
                 </table>
             </div>
         </div>
