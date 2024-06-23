@@ -29,7 +29,7 @@
                       <td><%= bank[i].bankName %></td>
                       <td><%= bank[i].accountNumber %></td>
                       <td><%= bank[i].name %></td>
-                      <td><img src="<%= bank[i].imageUrl %>" alt="logo <%= bank[i].name %>" height="70px"></td>
+                      <td><img src="<%= bank[i].imageUrl %>" alt="logo <%= bank[i].name %>" width="70px"></td>
                       <td>
                         <form
                           action="/admin/bank/<%= bank[i].id %>?_method=DELETE"
