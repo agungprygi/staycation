@@ -206,7 +206,6 @@ module.exports = {
           description,
           categoryId,
         };
-        console.log(newItem);
         const item = await Item.create(newItem);
         category.itemId.push({ _id: item._id });
         await category.save();
@@ -215,7 +214,6 @@ module.exports = {
           let dataURI = "data:" + req.files[i].mimetype + ";base64," + b64;
           const cldRes = await cloudinary.uploader.upload(dataURI);
           const { secure_url } = cldRes;
-          console.log(secure_url);
           const imageSave = await Image.create({ imageUrl: secure_url });
           item.imageId.push({ _id: imageSave._id });
           await item.save();
@@ -255,19 +253,120 @@ module.exports = {
       res.redirect("/admin/item");
     }
   },
+  showEditItem: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const item = await Item.findOne({ _id: id })
+        .populate({
+          path: "imageId",
+          select: "id imageUrl",
+        })
+        .populate({
+          path: "categoryId",
+          select: "id name",
+        });
+      const categories = await Category.find();
+      const alertMessage = req.flash("alertMessage");
+      const alertStatus = req.flash("alertStatus");
+      const alert = {
+        message: alertMessage,
+        status: alertStatus,
+      };
+      res.render("admin/item/view-item", {
+        title: "Staycation | Edit Item",
+        categories,
+        alert,
+        item,
+        action: "edit",
+      });
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/admin/item");
+    }
+  },
   editItem: async (req, res) => {
     try {
-      const {
-        id,
-        categoryId,
-        title,
-        price,
-        country,
-        state,
-        city,
-        description,
-      } = req.body;
-    } catch (error) {}
+      const { id } = req.params;
+      const { categoryId, title, price, country, state, city, description } =
+        req.body;
+      const item = await Item.findOne({ _id: id })
+        .populate({
+          path: "imageId",
+          select: "id imageUrl",
+        })
+        .populate({
+          path: "categoryId",
+          select: "id name",
+        });
+      if (req.files.length > 0) {
+        for (let i = 0; i < item.imageId.length; i++) {
+          let image = await Image.findOne({ _id: item.imageId[i]._id });
+          let pathname = new URL(image.imageUrl).pathname;
+          const path = pathname.split("/");
+          const filename = path.pop().split(".")[0];
+          await cloudinary.uploader.destroy(filename);
+          await Image.deleteOne({ _id: item.imageId[i]._id });
+        }
+        item.imageId=[] //empty the imageId that store in item
+        for (let i = 0; i < req.files.length; i++) {
+          const b64 = Buffer.from(req.files[i].buffer).toString("base64");
+          let dataURI = "data:" + req.files[i].mimetype + ";base64," + b64;
+          const cldRes = await cloudinary.uploader.upload(dataURI);
+          const { secure_url } = cldRes;
+          const imageSave = await Image.create({ imageUrl: secure_url });
+          item.imageId.push({ _id: imageSave._id });
+          await item.save();
+        }
+        req.flash("alertMessage", "Success Update Item");
+        req.flash("alertStatus", "success");
+        res.redirect("/admin/item");
+      } else {
+        item.title = title;
+        item.price = price;
+        item.country = country;
+        item.state = state;
+        item.city = city;
+        item.description = description;
+        item.categoryId = categoryId;
+        await item.save();
+        req.flash("alertMessage", "Success Update Item");
+        req.flash("alertStatus", "success");
+        res.redirect("/admin/item");
+      }
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/admin/item");
+    }
+  },
+  deleteItem: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const item = await Item.findOne({ _id: id })
+        .populate('imageId');
+      for (let i = 0; i < item.imageId.length; i++) {
+        Image.findOneAndDelete({ _id: item.imageId[i]._id }).then((image)=>{
+          let pathname = new URL(image.imageUrl).pathname;
+          const path = pathname.split("/");
+          const filename = path.pop().split(".")[0];
+          cloudinary.uploader.destroy(filename);
+          console.log(item.imageId[i]._id)
+        }).catch((err)=>{
+          req.flash("alertMessage", `${err.message}`);
+          req.flash("alertStatus", "danger");
+          res.redirect("/admin/item");
+        });
+      }
+      await Item.deleteOne({ _id: id });
+      req.flash("alertMessage", "Success Delete Item");
+      req.flash("alertStatus", "success");
+      res.redirect("/admin/item");
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect("/admin/item");
+    }
   },
   viewBooking: (req, res) => {
     res.render("admin/booking/view-booking", {
