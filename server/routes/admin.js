@@ -19,6 +19,7 @@ router.delete('/bank/:id', adminControllers.deleteBank);
 //end-point item
 router.get('/item', adminControllers.viewItem);
 router.post('/item', cloudinaryMultiUpload, adminControllers.addItem);
+router.get('/item/show-image/:id', adminControllers.showImageItem);
 
 //end-point booking
 router.get('/booking', adminControllers.viewBooking);

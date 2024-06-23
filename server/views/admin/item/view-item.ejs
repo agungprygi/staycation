@@ -17,36 +17,56 @@
         <h1 class="h3 mb-4 text-gray-800">Item</h1>
         <!-- END : Heading -->
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              id="home-tab"
-              data-toggle="tab"
-              href="#show-item"
-              role="tab"
-              aria-controls="home"
-              aria-selected="true"
-              >Show Item</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              id="profile-tab"
-              data-toggle="tab"
-              href="#add-item"
-              role="tab"
-              aria-controls="profile"
-              aria-selected="false"
-              >Add Item</a
-            >
-          </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <%- include table-item.ejs %> <%- include add-item.ejs %>
-        </div>
-        <!-- END: Tables -->
+        <% if (action=='view') { %>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                href="#show-item"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+                >Show Item</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                id="profile-tab"
+                data-toggle="tab"
+                href="#add-item"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+                >Add Item</a
+              >
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <%- include table-item.ejs %> <%- include add-item.ejs %>
+          </div>
+          <!-- END: Tables -->
+        <%} else if(action=='showImage'){%>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                href="#show-image"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+                >Show Item</a
+              >
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <%- include('show-image.ejs') %>
+          </div>
+        <%}%>
       </div>
       <!-- /.container-fluid -->
     </div>
