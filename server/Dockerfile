@@ -1,4 +1,4 @@
-FROM node:22.3.0-alpine
+FROM node:22.3-alpine
 
 WORKDIR /usr/src/app
 
@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "start"]

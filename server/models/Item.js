@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Category = require('./Category');
 const {ObjectId} = mongoose.Schema;
 
 const itemSchema = new mongoose.Schema({
@@ -14,16 +15,25 @@ const itemSchema = new mongoose.Schema({
         type: String,
         default: 'Indonesia'
     },
+    state: {
+        type: String,
+        required: true
+    },
     city: {
         type: String,
         required: true
     },
     isPopular: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
     description: {
         type: String,
         required: true
+    },
+    categoryId: {
+        type: ObjectId,
+        ref: 'Category'
     },
     imageId: [{
         type: ObjectId,
