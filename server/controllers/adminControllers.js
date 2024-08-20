@@ -2,6 +2,7 @@ const Category = require("../models/Category");
 const Bank = require("../models/Bank");
 const Item = require("../models/Item");
 const Image = require("../models/Image");
+const Feature = require("../models/Feature");
 const cloudinary = require("../utils/cloudinary");
 
 module.exports = {
@@ -280,6 +281,7 @@ module.exports = {
         action: "edit",
       });
     } catch (error) {
+      console.log("malah kesini");
       req.flash("alertMessage", `${error.message}`);
       req.flash("alertStatus", "danger");
       res.redirect("/admin/item");
@@ -338,6 +340,113 @@ module.exports = {
       req.flash("alertMessage", `${error.message}`);
       req.flash("alertStatus", "danger");
       res.redirect("/admin/item");
+    }
+  },
+  viewDetailItem: async(req, res) => {
+    const {itemId} = req.params;
+    const alertMessage = req.flash("alertMessage");
+    const alertStatus = req.flash("alertStatus");
+    const alert = {
+      message: alertMessage,
+      status: alertStatus,
+    };
+    const feature = await Feature.find({itemId : itemId});
+
+    try {
+      res.render("admin/item/detail_item/view_detail_item", {
+        title: "Staycation | Detail Item",
+        alert,
+        itemId,
+        feature
+      })
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    }
+  },
+  addFeature: async (req, res) => {
+    const { name, qty, itemId } = req.body;
+    try {
+      const b64 = Buffer.from(req.file.buffer).toString("base64");
+      let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+      const cldRes = await cloudinary.uploader.upload(dataURI);
+      const { secure_url } = cldRes;
+      if(!req.file){
+        req.flash("alertMessage", "Image not found");
+        req.flash("alertStatus", "danger");
+        res.redirect(`/admin/item/show-detail-item/${itemId}`);
+      }
+      const feature = await Feature.create({
+        name,
+        qty,
+        imageUrl: secure_url,
+        itemId
+      });
+
+      const item = await Item.findOne({_id: itemId});
+      item.featureId.push({_id:feature._id});
+      await item.save();
+      req.flash("alertMessage", "Success Add Feature");
+      req.flash("alertStatus", "success");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    }
+  },
+  editFeature: async (req, res) => {
+    try {
+      const { id, name, qty, image, itemId } = req.body;
+      const feature = await Feature.findOne({ _id: id });
+      feature.name = name;
+      feature.qty = qty;
+      if (req.file != undefined) {
+        let pathname = new URL(image).pathname;
+        const path = pathname.split("/");
+        const filename = path.pop().split(".")[0];
+        await cloudinary.uploader.destroy(filename);
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+        const cldRes = await cloudinary.uploader.upload(dataURI);
+        const { secure_url } = cldRes;
+        feature.imageUrl = secure_url;
+      }
+      await feature.save();
+      req.flash("alertMessage", "Success Update Feature");
+      req.flash("alertStatus", "success");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    }
+  },
+  deleteFeature: async (req, res) => {
+    const { id, itemId } = req.params;
+    try {
+      const url = await Feature.findOne({ _id: id });
+      let pathname = new URL(url.imageUrl).pathname;
+      const path = pathname.split("/");
+      const filename = path.pop().split(".")[0];
+      const feature = await Feature.findOne({ _id: id });
+      const item = await Item.findOne({_id:itemId}).populate('featureId');
+      for(let i=0; i < item.featureId.length; i++){
+        if(item.featureId[i]._id.toString() === feature._id.toString())
+        {
+            await Item.findByIdAndUpdate(itemId, {$pull : { featureId : feature._id}});
+        }
+      }
+      await Feature.deleteOne({_id : id});
+      await cloudinary.uploader.destroy(filename);
+      req.flash("alertMessage", "Success Delete Feature");
+      req.flash("alertStatus", "success");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
     }
   },
   deleteItem: async (req, res) => {

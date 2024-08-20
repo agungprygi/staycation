@@ -24,6 +24,12 @@ router.get('/item/edit/:id', adminControllers.showEditItem);
 router.put('/item/:id', cloudinaryMultiUpload, adminControllers.editItem);
 router.delete('/item/:id', adminControllers.deleteItem);
 
+//end-point detail item
+router.get('/item/show-detail-item/:itemId', adminControllers.viewDetailItem);
+router.post('/item/add-feature', cloudinaryUpload,adminControllers.addFeature);
+router.put('/item/edit/feature', cloudinaryUpload,adminControllers.editFeature);
+router.delete('/item/:itemId/delete-feature/:id', adminControllers.deleteFeature);
+
 //end-point booking
 router.get('/booking', adminControllers.viewBooking);
 
