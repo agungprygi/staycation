@@ -1,7 +1,12 @@
 const router = require('express').Router();
 const adminControllers = require('../controllers/adminControllers');
 const { cloudinaryUpload, cloudinaryMultiUpload } = require('../middlewares/multer');
+const auth = require('../middlewares/auth')
 
+router.get('/signin', adminControllers.viewSignIn);
+router.post('/signin', adminControllers.actionSignin);
+router.use(auth);
+router.get('/logout', adminControllers.actionLogout);
 router.get('/dashboard', adminControllers.viewDashboard);
 
 //end-point category
@@ -29,6 +34,11 @@ router.get('/item/show-detail-item/:itemId', adminControllers.viewDetailItem);
 router.post('/item/add-feature', cloudinaryUpload,adminControllers.addFeature);
 router.put('/item/edit/feature', cloudinaryUpload,adminControllers.editFeature);
 router.delete('/item/:itemId/delete-feature/:id', adminControllers.deleteFeature);
+
+//end-point activity
+router.post('/item/add-activity', cloudinaryUpload,adminControllers.addActivity);
+router.put('/item/edit/activity', cloudinaryUpload,adminControllers.editActivity);
+router.delete('/item/:itemId/delete-activity/:id', adminControllers.deleteActivity);
 
 //end-point booking
 router.get('/booking', adminControllers.viewBooking);

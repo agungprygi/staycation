@@ -13,7 +13,7 @@ dotenv.config();
 
 //connect mongoDB
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb://mongo:27017/db-staycation');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

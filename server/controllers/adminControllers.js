@@ -3,13 +3,71 @@ const Bank = require("../models/Bank");
 const Item = require("../models/Item");
 const Image = require("../models/Image");
 const Feature = require("../models/Feature");
+const Activity = require("../models/Activity");
+const User = require("../models/Users")
 const cloudinary = require("../utils/cloudinary");
+const Users = require("../models/Users");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
+  viewSignIn: async (req, res) => {
+    try {
+      const alertMessage = req.flash("alertMessage");
+      const alertStatus = req.flash("alertStatus");
+      const alert = {
+        message: alertMessage,
+        status: alertStatus,
+      };
+      if(req.session.user == null || req.session.user == undefined){
+        res.render("index", {
+          alert,
+          title: "Staycation | Login",
+        });
+    } else {
+        res.redirect('/admin/dashboard');
+    }
+      
+    } catch (error) {
+      res.redirect("admin/signin");
+    }
+  },
+  actionSignin: async (req, res) => {
+    try {
+      const {username, password} = req.body;
+      const user = await Users.findOne({username : username});
+      if (!user) {
+        req.flash("alertMessage", "User Not Found!!!");
+        req.flash("alertStatus", "danger");
+        return res.redirect("/admin/signin");
+      }
+      const isPasswordMatch = await bcrypt.compare(password, user.password);
+      if (!isPasswordMatch){
+        req.flash("alertMessage", "Wrong Password!!");
+        req.flash("alertStatus", "danger");
+        return res.redirect("/admin/signin");
+      }
+      req.session.user = {
+        id: user.id,
+        username : user.username
+      }
+      return res.redirect("/admin/dashboard");
+    } catch (error) {
+      return res.redirect("/admin/signin");
+    }
+  },
+  actionLogout: (req, res) => {
+    req.session.destroy();
+    res.redirect('/admin/signin');
+  },
   viewDashboard: (req, res) => {
+   try {
     res.render("admin/dashboard/view-dashboard", {
       title: "Staycation | Dashboard",
+      user: req.session.user
     });
+   } catch (error) {
+    
+   }
   },
   viewCategory: async (req, res) => {
     try {
@@ -24,6 +82,7 @@ module.exports = {
         category,
         alert,
         title: "Staycation | Category",
+        user: req.session.user
       });
     } catch (error) {
       res.redirect("/admin/category");
@@ -85,6 +144,7 @@ module.exports = {
         bank,
         alert,
         title: "Staycation | Bank",
+        user: req.session.user
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -185,6 +245,7 @@ module.exports = {
         alert,
         items,
         action: "view",
+        user: req.session.user
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -247,6 +308,7 @@ module.exports = {
         alert,
         item,
         action: "showImage",
+        user: req.session.user
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -279,6 +341,7 @@ module.exports = {
         alert,
         item,
         action: "edit",
+        user: req.session.user
       });
     } catch (error) {
       console.log("malah kesini");
@@ -351,13 +414,16 @@ module.exports = {
       status: alertStatus,
     };
     const feature = await Feature.find({itemId : itemId});
+    const activity = await  Activity.find({itemId : itemId});
 
     try {
       res.render("admin/item/detail_item/view_detail_item", {
         title: "Staycation | Detail Item",
         alert,
         itemId,
-        feature
+        feature,
+        activity,
+        user: req.session.user
       })
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
@@ -449,6 +515,90 @@ module.exports = {
       res.redirect(`/admin/item/show-detail-item/${itemId}`);
     }
   },
+  addActivity: async (req, res) => {
+    const { name, type, itemId } = req.body;
+    try {
+      const b64 = Buffer.from(req.file.buffer).toString("base64");
+      let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+      const cldRes = await cloudinary.uploader.upload(dataURI);
+      const { secure_url } = cldRes;
+      if(!req.file){
+        req.flash("alertMessage", "Image not found");
+        req.flash("alertStatus", "danger");
+        res.redirect(`/admin/item/show-detail-item/${itemId}`);
+      }
+      const activity = await Activity.create({
+        name,
+        type,
+        imageUrl: secure_url,
+        itemId
+      });
+
+      const item = await Item.findOne({_id: itemId});
+      item.activityId.push({_id:activity._id});
+      await item.save();
+      req.flash("alertMessage", "Success Add Activity");
+      req.flash("alertStatus", "success");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    }
+  },
+  editActivity: async (req, res) => {
+    try {
+      const { id, name, type, image, itemId } = req.body;
+      const activity = await Activity.findOne({ _id: id });
+      activity.name = name;
+      activity.type = type;
+      if (req.file != undefined) {
+        let pathname = new URL(image).pathname;
+        const path = pathname.split("/");
+        const filename = path.pop().split(".")[0];
+        await cloudinary.uploader.destroy(filename);
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+        const cldRes = await cloudinary.uploader.upload(dataURI);
+        const { secure_url } = cldRes;
+        activity.imageUrl = secure_url;
+      }
+      await activity.save();
+      req.flash("alertMessage", "Success Update Activity");
+      req.flash("alertStatus", "success");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    }
+  },
+  deleteActivity: async (req, res) => {
+    const { id, itemId } = req.params;
+    try {
+      const url = await Activity.findOne({ _id: id });
+      let pathname = new URL(url.imageUrl).pathname;
+      const path = pathname.split("/");
+      const filename = path.pop().split(".")[0];
+      const activity = await Activity.findOne({ _id: id });
+      const item = await Item.findOne({_id:itemId}).populate('activityId');
+      for(let i=0; i < item.activityId.length; i++){
+        if(item.activityId[i]._id.toString() === activity._id.toString())
+        {
+            await Item.findByIdAndUpdate(itemId, {$pull : { activityId : activity._id}});
+        }
+      }
+      await Activity.deleteOne({_id : id});
+      await cloudinary.uploader.destroy(filename);
+      req.flash("alertMessage", "Success Delete Activity");
+      req.flash("alertStatus", "success");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    } catch (error) {
+      req.flash("alertMessage", `${error.message}`);
+      req.flash("alertStatus", "danger");
+      res.redirect(`/admin/item/show-detail-item/${itemId}`);
+    }
+  },
   deleteItem: async (req, res) => {
     try {
       const { id } = req.params;
@@ -480,6 +630,7 @@ module.exports = {
   viewBooking: (req, res) => {
     res.render("admin/booking/view-booking", {
       title: "Staycation | Booking",
+      user: req.session.user
     });
   },
 };
