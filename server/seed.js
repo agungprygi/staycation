@@ -14,7 +14,7 @@ async function seedDatabase() {
     try {
       // Connect to MongoDB
       console.log('Connecting to MongoDB...');
-      await mongoose.connect('mongodb://mongo:27017/db-staycation', {
+      await mongoose.connect('mongodb+srv://123200085:ECsus21LvDF6nRPP@staycation.fazzf.mongodb.net/?retryWrites=true&w=majority&appName=staycation', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
