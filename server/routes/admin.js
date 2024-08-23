@@ -42,6 +42,9 @@ router.delete('/item/:itemId/delete-activity/:id', adminControllers.deleteActivi
 
 //end-point booking
 router.get('/booking', adminControllers.viewBooking);
+router.get('/booking/:id', adminControllers.viewDetailBooking);
+router.put('/booking/:id/confirm', adminControllers.actionConfirmation);
+router.put('/booking/:id/reject', adminControllers.actionReject);
 
 
 module.exports = router;
