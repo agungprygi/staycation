@@ -13,12 +13,13 @@ dotenv.config();
 
 //connect mongoDB
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb://mongo:27017/db-staycation');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 // router admin
 var adminRouter = require('./routes/admin');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/sb-admin-2', express.static(path.join(__dirname, 'node_modules/startbo
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter); // router admin
+app.use('/api/v1/member', apiRouter); // router api
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

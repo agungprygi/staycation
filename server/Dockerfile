@@ -9,6 +9,8 @@ RUN yarn install
 
 COPY . .
 
+RUN node ./seed.js
+
 EXPOSE 5000
 
 CMD [ "yarn", "start"]

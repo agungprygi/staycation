@@ -99,6 +99,7 @@
 </div>
 
 <%- include('show_modal_feature.ejs') %>
+<%- include('show_modal_activity.ejs') %>
 <%- include('../../../partials/js.ejs') %>
 <script>
   $(".countrypicker").countrypicker();
@@ -115,6 +116,17 @@
           $("#edit-feature").modal("show");
           $(".id").val(id);
           $(".qty").val(qty);
+          $(".name").val(name); 
+          $(".image").val(image); 
+        });
+  $("#dataTableActivity").on("click", ".button-update", function () {
+          let id = $(this).data("id");
+          let name = $(this).data("name");
+          let type = $(this).data("type");
+          let image = $(this).data("image");
+          $("#edit-activity").modal("show");
+          $(".id").val(id);
+          $(".type").val(type);
           $(".name").val(name); 
           $(".image").val(image); 
         });
