@@ -7,6 +7,7 @@ const methodOverride = require('method-override')
 const session = require('express-session');
 const flash = require('connect-flash');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 //dotenv config
 dotenv.config();
@@ -27,6 +28,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(cors())
 app.use(methodOverride('_method'));
 app.use(session({
   secret: 'keyboard cat',

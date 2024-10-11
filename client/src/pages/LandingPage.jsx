@@ -1,13 +1,24 @@
-import {React, Component} from 'react'
+import {React, Component, useState} from 'react'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
+import axios from "axios";
 
 export default class LandingPage extends Component {
+  constructor(){
+    super()
+    this.state = {data:[]}
+  }
+ componentDidMount = async () => {
+  await axios.get(`${import.meta.env.VITE_LOCAL_API_URL}/landing-page`).then(response=> {
+    this.setState({data:response.data})
+  })
+ }
   render() {
     return (
         <div>
             <Header></Header>
-            <Hero/>
+            <hr />
+            <Hero {...this.state.data}/>
         </div>
     )
   }
