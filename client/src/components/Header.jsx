@@ -18,8 +18,8 @@ export default function Header() {
             </a>
           </div>
           <div className="md:hidden">
-            <details class="dropdown dropdown-end">
-              <summary class="btn m-1">
+            <details className="dropdown dropdown-end">
+              <summary className="btn m-1">
               <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"

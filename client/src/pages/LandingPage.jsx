@@ -1,6 +1,7 @@
 import {React, Component, useState} from 'react'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
+import MostPicked from '../components/MostPicked'
 import axios from "axios";
 
 export default class LandingPage extends Component {
@@ -19,6 +20,7 @@ export default class LandingPage extends Component {
             <Header></Header>
             <hr />
             <Hero {...this.state.data}/>
+            <MostPicked {...this.state.data}/>
         </div>
     )
   }

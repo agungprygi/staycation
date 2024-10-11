@@ -5,7 +5,6 @@ import CameraIcon from "./../assets/icons/ic_treasure.png";
 import LocationIcon from "./../assets/icons/ic_cities.png";
 
 export default function Hero(props) {
-  console.log(props)
   if (props.hero == undefined) {
     return (
       <section className="container mx-auto pt-4 px-40 font-poppins">
