@@ -13,7 +13,7 @@ export default function Categories(props) {
             return (
               <div className='w-full h-44 relative' key={`item-${index}`}>
                 {item.isPopular && (
-                  <div className='absolute right-0 top-0 rounded-tr-xl rounded-bl-lg  bg-rose-500 px-4 py-2 text-white text-sm'>
+                  <div className='absolute right-0 top-0 rounded-tr-xl rounded-bl-lg  bg-rose-500 px-4 py-2 text-white text-sm z-10'>
                     <span className='font-semibold'>
                       Popular
                     </span>
@@ -21,7 +21,9 @@ export default function Categories(props) {
                     <span className='font-light'>Choice</span>
                   </div>
                 )}
-                <img src={item.imageId[0].imageUrl} alt={item.title} className='w-full h-full object-cover rounded-xl hover:scale-105 transition-all duration-300'/>
+                <div className='w-full h-full rounded-xl overflow-hidden'>
+                  <img src={item.imageId[0].imageUrl} alt={item.title} className='w-full h-full object-cover transition-all duration-300  scale-110 hover:scale-100'/>
+                </div>
                 <div>
                   <h5 className='text-xl mt-1'>
                     {item.title}
