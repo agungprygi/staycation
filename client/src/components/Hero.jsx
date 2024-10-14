@@ -50,7 +50,7 @@ export default function Hero(props) {
                   We provide what you need to enjoy your holiday with family.
                   Time to make another memorable moments.
                 </p>
-                <button className="bg-primary py-2 px-10 rounded-lg text-lg font-medium text-white w-full md:w-1/2">
+                <button className="bg-primary py-2 px-10 rounded-lg text-lg font-medium text-white w-full md:w-1/2" onClick={props.scrollToMostPicked}>
                   Show Me Now
                 </button>
               </div>

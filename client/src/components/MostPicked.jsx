@@ -1,9 +1,9 @@
-import React from "react";
+import {React, useRef} from "react";
 
 export default function MostPicked(props) {
-  console.log(props.mostPicked);
+  const mostPickedRef = props.innerRef;
   return (
-    <section className="container mx-auto pt-4 md:px-40 px-4 font-poppins">
+    <section className="container mx-auto pt-4 md:px-40 px-4 font-poppins" ref={mostPickedRef}>
       <h4 className="text-xl font-semibold md:mt-16 mt-4 text-start">
         Most Picked
       </h4>
