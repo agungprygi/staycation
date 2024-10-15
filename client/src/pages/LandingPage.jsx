@@ -1,9 +1,12 @@
-import {React, Component, useState, createRef} from 'react'
+import { Component, createRef} from 'react'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import MostPicked from '../components/MostPicked'
 import Categories from '../components/Categories'
-import axios from "axios";
+import Testimonial from '../components/Testimonial'
+import Footer from '../components/Footer'
+// import axios from "axios";
+import landingPage from '../json/landingPage.json'
 
 export default class LandingPage extends Component {
   constructor(){
@@ -12,9 +15,10 @@ export default class LandingPage extends Component {
     this.mostPickedRef = createRef()
   }
  componentDidMount = async () => {
-  await axios.get(`${import.meta.env.VITE_LOCAL_API_URL}/landing-page`).then(response=> {
-    this.setState({data:response.data})
-  })
+  // await axios.get(`${import.meta.env.VITE_LOCAL_API_URL}/landing-page`).then(response=> {
+  //   this.setState({data:response.data})
+  // })
+  // this.setState({data:landingPage})
  }
  scrollToMostPicked = () => {
   this.mostPickedRef.current.scrollIntoView({block: "start", inline: "nearest", behavior: 'smooth'})
@@ -24,9 +28,12 @@ export default class LandingPage extends Component {
         <div>
             <Header></Header>
             <hr />
-            <Hero {...this.state.data} scrollToMostPicked={this.scrollToMostPicked}/>
-            <MostPicked {...this.state.data} innerRef={this.mostPickedRef}/>
-            <Categories {...this.state.data}/>
+            <Hero data={landingPage.hero} scrollToMostPicked={this.scrollToMostPicked}/>
+            <MostPicked data={landingPage.mostPicked} innerRef={this.mostPickedRef}/>
+            <Categories data={landingPage.categories}/>
+            <Testimonial data={landingPage.testimonial}/>
+            <hr/>
+            <Footer/>
         </div>
     )
   }

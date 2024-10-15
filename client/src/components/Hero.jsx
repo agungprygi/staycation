@@ -1,11 +1,11 @@
-import React from "react";
+// import React from "react";
 import ImageHero from "./../assets/banner.png";
 import TravelIcon from "./../assets/icons/ic_traveler.png";
 import CameraIcon from "./../assets/icons/ic_treasure.png";
 import LocationIcon from "./../assets/icons/ic_cities.png";
 
 export default function Hero(props) {
-  if (props.hero == undefined) {
+  if (props.data === undefined) {
     return (
       <section className="container mx-auto pt-4 px-40 font-poppins">
         {/* <div className="hero h-1/3 w-full">
@@ -59,7 +59,7 @@ export default function Hero(props) {
                   <img src={TravelIcon} alt="Treasure" className="w-10" />
                   <div>
                     <p className="font-medium">
-                      {props.hero.travelers.toLocaleString()}
+                      {props.data.travelers.toLocaleString()}
                       <span className="font-light text-gray-500">
                         {" "}travelers
                       </span>
@@ -70,7 +70,7 @@ export default function Hero(props) {
                   <img src={CameraIcon} alt="Treasure" className="w-10" />
                   <div>
                     <p className="font-medium">
-                      {props.hero.treasures.toLocaleString()}
+                      {props.data.treasures.toLocaleString()}
                       <span className="font-light text-gray-500">
                       {" "} treasure
                       </span>
@@ -81,7 +81,7 @@ export default function Hero(props) {
                   <img src={LocationIcon} alt="Treasure" className="w-10" />
                   <div>
                     <p className="font-medium">
-                      {props.hero.cities.toLocaleString()}
+                      {props.data.cities.toLocaleString()}
                       <span className="font-light text-gray-500">
                       {" "} cities
                       </span>

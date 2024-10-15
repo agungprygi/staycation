@@ -1,0 +1,151 @@
+{
+  "_id": "asd1293uasdads1",
+  "name": "Village Angga",
+  "type": "Hotel",
+  "imageUrls": [
+    {
+      "_id": "asd1293uasdads1",
+      "url": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299917/lww1jlsoxwy6fhbwbdff.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "url": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299917/x2lgmelxcufqi8lmql3p.jpg"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "url": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299917/p7j0xgzifvs9qn9gf7i7.jpg"
+    }
+  ],
+  "country": "Indonesia",
+  "city": "Bogor",
+  "price": "52",
+  "unit": "night",
+  "isPopular": true,
+  "hasBackyard": true,
+  "description": "<p>Minimal techno is a minimalist subgenre of techno music. It ischaracterized by a stripped-down aesthetic that exploits the use ofrepetition and understated development. Minimal techno is thought tohave been originally developed in the early 1990s by Detroit-basedproducers Robert Hood and Daniel Bell.</p><p>Such trends saw the demise of the soul-infused techno that typified theoriginal Detroit sound. Robert Hood has noted that he and Daniel Bellboth realized something was missing from techno in the post-rave era.</p><p>Design is a plan or specification for the construction of an object orsystem or for the implementation of an activity or process, or theresult of that plan or specification in the form of a prototype, productor process. The national agency for design: enabling Singapore to usedesign for economic growth and to make lives better.</p>",
+  "features": [
+    {
+      "_id": "asd1293uasdads1",
+      "qty": "3",
+      "name": "bedroom",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299924/br0pzwsxxgn9rabr2dbj.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "qty": "1",
+      "name": "living room",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299924/zamqeidcaids33eyhfpd.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "qty": "2",
+      "name": "bath room",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299924/oq9zs8nzdbgfoxgw0n01.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "qty": "1",
+      "name": "dining room",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299924/bxs1ispoklzsynq7gvso.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "qty": "10",
+      "name": "mbps",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299924/kynabrwhxwpv5lidsyxj.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "qty": "2",
+      "name": "units ready",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299924/xylexr2q8xepnshsjxam.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "qty": "2",
+      "name": "refrigerator",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/iemf0wtgl219xl4byj04.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "qty": "1",
+      "name": "television",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/ecruh7sjpsbzspnpwckh.png"
+    }
+  ],
+  "activities": [
+    {
+      "_id": "asd1293uasdads1",
+      "name": "Kebun Park",
+      "type": "Nature",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299927/nhn0o4swiid0gvhnd9zt.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "name": "Water land",
+      "type": "Pool",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299927/ychlhminxr8wotr1ywxt.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "name": "Kebun Park",
+      "type": "Nature",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299926/zuc3os98tl9l1ngblpxm.png"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "name": "Water land",
+      "type": "Pool",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299926/zo1z06rtcwzi13nhg0ej.png"
+    }
+  ],
+  "categories": [
+    {
+      "_id": "asd1293uasdads1",
+      "name": "House with beauty backyard",
+      "items": [
+        {
+          "_id": "asd1293uasdads1",
+          "name": "PSW Antasari",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/c6qqvutxzbu5caugwqex.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Kuretakeso",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/yfqjsz5pjk1ph0eggx9s.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Arya Duta",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/swz9bvkqztijhftlvocm.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": true
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Grand Dhika",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/g4kqfxrz5fwfve3mnahx.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        }
+      ]
+    }
+  ],
+  "testimonial": {
+    "_id": "asd1293uasdads1",
+    "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1728968408/foto_keluarga_fygool.png",
+    "name": "Happy Family",
+    "rate": 4.25,
+    "content": "What a great trip with my family and I should try again and again next time soon...",
+    "familyName": "Angga",
+    "familyOccupation": "UI Designer"
+  }
+}
