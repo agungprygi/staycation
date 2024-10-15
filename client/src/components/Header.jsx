@@ -1,4 +1,3 @@
-import React, { act } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function Header() {
@@ -35,7 +34,7 @@ export default function Header() {
               />
             </svg>
               </summary>
-              <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+              <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
               <li className={`${active("/")} mx-2`}>
                 <a href="/">Home</a>
               </li>

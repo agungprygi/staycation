@@ -1,0 +1,184 @@
+{
+  "hero": {
+    "travelers": 80409,
+    "treasures": 882,
+    "cities": 1492
+  },
+  "mostPicked": [
+    {
+      "_id": "asd1293uasdads1",
+      "name": "Jung Hook Sie",
+      "type": "Apartment",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299919/hafvazfsow9qpf6j3gfh.jpg",
+      "country": "South Korea",
+      "city": "Seoul Flore",
+      "price": "80",
+      "unit": "night"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "name": "The People House",
+      "type": "Hotel",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299919/zwkqwurypncgtvwgoxae.jpg",
+      "country": "Indonesia",
+      "city": "Bogor",
+      "price": "52",
+      "unit": "night"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "name": "House Tour",
+      "type": "Rumah",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299919/qs8g6wils7ehzmuuh6k5.jpg",
+      "country": "South Korea",
+      "city": "Seoul Flore",
+      "price": "80",
+      "unit": "night"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "name": "Jung Hook Sie",
+      "type": "Apartment",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299918/ne4zzumyj6pcdvwqjzuq.jpg",
+      "country": "South Korea",
+      "city": "Seoul Flore",
+      "price": "80",
+      "unit": "night"
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "name": "Jung Hook Sie",
+      "type": "Apartment",
+      "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299919/lccda4bylazxqjjanb7v.jpg",
+      "country": "South Korea",
+      "city": "Seoul Flore",
+      "price": "80",
+      "unit": "night"
+    }
+  ],
+  "categories": [
+    {
+      "_id": "asd1293uasdads1",
+      "name": "House with beauty backyard",
+      "items": [
+        {
+          "_id": "asd1293uasdads1",
+          "name": "PSW Antasari",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/c6qqvutxzbu5caugwqex.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": true
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Kuretakeso",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/yfqjsz5pjk1ph0eggx9s.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Arya Duta",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/swz9bvkqztijhftlvocm.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Grand Dhika",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/g4kqfxrz5fwfve3mnahx.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        }
+      ]
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "name": "Hotels with large living room",
+      "items": [
+        {
+          "_id": "asd1293uasdads1",
+          "name": "PSW Antasari",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/qtgthurnadtyoiidaomi.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Kuretakeso",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299923/c99xvwfeblsdhshyzk05.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Arya Duta",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299922/cqmx2kudqmmfpxhodpix.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Grand Dhika",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299922/aybouuplqrd7bfw38bfl.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": true
+        }
+      ]
+    },
+    {
+      "_id": "asd1293uasdads1",
+      "name": "Apartments with kitchen set",
+      "items": [
+        {
+          "_id": "asd1293uasdads1",
+          "name": "PSW Antasari",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299922/bcixqehtmwcrthmw63uq.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Kuretakeso",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299922/hihmxxrjbcgn9o7gjult.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Arya Duta",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299922/bkn4naoqaen7ksykzb2d.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": true
+        },
+        {
+          "_id": "asd1293uasdads1",
+          "name": "Grand Dhika",
+          "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1724299922/los35bseyvd26wd9qb4g.jpg",
+          "country": "South Korea",
+          "city": "Seoul Flore",
+          "isPopular": false
+        }
+      ]
+    }
+  ],
+  "testimonial": {
+    "_id": "asd1293uasdads1",
+    "imageUrl": "https://res.cloudinary.com/duikqpux7/image/upload/v1728968408/foto_keluarga_fygool.png",
+    "name": "Happy Family",
+    "rate": 4.55,
+    "content": "What a great trip with my family and I should try again next time soon ...",
+    "familyName": "Angga",
+    "familyOccupation": "Product Designer"
+  }
+}

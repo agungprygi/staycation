@@ -1,9 +1,9 @@
-import React from "react";
+// import {React, useRef} from "react";
 
 export default function MostPicked(props) {
-  console.log(props.mostPicked);
+  const mostPickedRef = props.innerRef;
   return (
-    <section className="container mx-auto pt-4 md:px-40 px-4 font-poppins">
+    <section className="container mx-auto pt-4 md:px-40 px-4 font-poppins" ref={mostPickedRef}>
       <h4 className="text-xl font-semibold md:mt-16 mt-4 text-start">
         Most Picked
       </h4>
@@ -13,31 +13,33 @@ export default function MostPicked(props) {
             <div className="z-10 absolute top-0 right-0 text-white">
               <h2 className="px-6 py-2 bg-rose-500 rounded-bl-lg rounded-tr-xl">
                 $
-                {props.mostPicked !== undefined
-                  ? props.mostPicked[0].price
+                {props.data !== undefined
+                  ? props.data[0].price
                   : ""}{" "}
                 per{" "}
-                {props.mostPicked !== undefined ? props.mostPicked[0].unit : ""}
+                {props.data !== undefined ? props.data[0].unit : ""}
               </h2>
             </div>
+            <div className="w-full h-full rounded-xl overflow-hidden">
             <img
               src={
-                props.mostPicked !== undefined
-                  ? props.mostPicked[0].imageId[0].imageUrl
+                props.data !== undefined
+                  ? props.data[0].imageUrl
                   : ""
               }
               alt="Most Picked"
+              className="w-full h-full object-cover transition-all duration-300  scale-110 hover:scale-100"
             />
-            <div className="w-full h-full card bg-black opacity-0 hover:opacity-50 absolute top-0 left-0 transition-all duration-300 z-5"></div>
+            </div>
             <div className="z-10 absolute bottom-4 left-4 text-white">
               <p className="font-regular text-xl">
-                {props.mostPicked !== undefined
-                  ? props.mostPicked[0].title
+                {props.data !== undefined
+                  ? props.data[0].name
                   : ""}
               </p>
               <p className="font-ligth text-sm">
-                {props.mostPicked !== undefined
-                  ? props.mostPicked[0].state
+                {props.data !== undefined
+                  ? props.data[0].country
                   : ""}
               </p>
             </div>
@@ -49,33 +51,35 @@ export default function MostPicked(props) {
               <div className="z-10 absolute top-0 right-0 text-white">
                 <h2 className="px-6 py-2 bg-rose-500 rounded-bl-lg rounded-tr-xl">
                   $
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[1].price
+                  {props.data !== undefined
+                    ? props.data[1].price
                     : ""}{" "}
                   per{" "}
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[1].unit
+                  {props.data !== undefined
+                    ? props.data[1].unit
                     : ""}
                 </h2>
               </div>
-              <img
-                src={
-                  props.mostPicked !== undefined
-                    ? props.mostPicked[1].imageId[0].imageUrl
+              <div className="w-full h-full rounded-xl overflow-hidden">
+                <img
+                  src={
+                    props.data !== undefined
+                    ? props.data[1].imageUrl
                     : ""
                 }
                 alt="Most Picked"
+                className="w-full h-full object-cover transition-all duration-300  scale-110 hover:scale-100"
               />
-              <div className="w-full h-full card bg-black opacity-0 hover:opacity-50 absolute top-0 left-0 transition-all duration-300 z-5"></div>
+              </div>
               <div className="z-10 absolute bottom-4 left-4 text-white">
                 <p className="font-regular text-xl">
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[1].title
+                  {props.data !== undefined
+                    ? props.data[1].name
                     : ""}
                 </p>
                 <p className="font-ligth text-sm">
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[1].state
+                  {props.data !== undefined
+                    ? props.data[1].country
                     : ""}
                 </p>
               </div>
@@ -84,33 +88,35 @@ export default function MostPicked(props) {
               <div className="z-10 absolute top-0 right-0 text-white">
                 <h2 className="px-6 py-2 bg-rose-500 rounded-bl-lg rounded-tr-xl">
                   $
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[2].price
+                  {props.data !== undefined
+                    ? props.data[2].price
                     : ""}{" "}
                   per{" "}
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[2].unit
+                  {props.data !== undefined
+                    ? props.data[2].unit
                     : ""}
                 </h2>
               </div>
-              <img
-                src={
-                  props.mostPicked !== undefined
-                    ? props.mostPicked[2].imageId[0].imageUrl
+              <div className="w-full h-full rounded-xl overflow-hidden">
+                <img
+                  src={
+                    props.data !== undefined
+                    ? props.data[2].imageUrl
                     : ""
                 }
                 alt="Most Picked"
+                className="w-full h-full object-cover transition-all duration-300  scale-110 hover:scale-100"
               />
-               <div className="w-full h-full card bg-black opacity-0 hover:opacity-50 absolute top-0 left-0 transition-all duration-300 z-5"></div>
+              </div>
               <div className="z-10 absolute bottom-4 left-4 text-white">
                 <p className="font-regular text-xl">
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[2].title
+                  {props.data !== undefined
+                    ? props.data[2].name
                     : ""}
                 </p>
                 <p className="font-ligth text-sm">
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[2].state
+                  {props.data !== undefined
+                    ? props.data[2].country
                     : ""}
                 </p>
               </div>
@@ -123,33 +129,35 @@ export default function MostPicked(props) {
               <div className="z-10 absolute top-0 right-0 text-white">
                 <h2 className="px-6 py-2 bg-rose-500 rounded-bl-lg rounded-tr-xl">
                   $
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[3].price
+                  {props.data !== undefined
+                    ? props.data[3].price
                     : ""}{" "}
                   per{" "}
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[3].unit
+                  {props.data !== undefined
+                    ? props.data[3].unit
                     : ""}
                 </h2>
               </div>
-              <img
-                src={
-                  props.mostPicked !== undefined
-                    ? props.mostPicked[3].imageId[0].imageUrl
+              <div className="w-full h-full rounded-xl overflow-hidden">
+                <img
+                  src={
+                  props.data !== undefined
+                    ? props.data[3].imageUrl
                     : ""
                 }
                 alt="Most Picked"
+                className="w-full h-full object-cover transition-all duration-300  scale-110 hover:scale-100"
               />
-               <div className="w-full h-full card bg-black opacity-0 hover:opacity-50 absolute top-0 left-0 transition-all duration-300 z-5"></div>
+              </div>
               <div className="z-10 absolute bottom-4 left-4 text-white">
                 <p className="font-regular text-xl">
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[3].title
+                  {props.data !== undefined
+                    ? props.data[3].name
                     : ""}
                 </p>
                 <p className="font-ligth text-sm">
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[3].state
+                  {props.data !== undefined
+                    ? props.data[3].country
                     : ""}
                 </p>
               </div>
@@ -158,33 +166,35 @@ export default function MostPicked(props) {
               <div className="z-10 absolute top-0 right-0 text-white">
                 <h2 className="px-6 py-2 bg-rose-500 rounded-bl-lg rounded-tr-xl">
                   $
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[4].price
+                  {props.data !== undefined
+                    ? props.data[4].price
                     : ""}{" "}
                   per{" "}
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[4].unit
+                  {props.data !== undefined
+                    ? props.data[4].unit
                     : ""}
                 </h2>
               </div>
-              <img
-                src={
-                  props.mostPicked !== undefined
-                    ? props.mostPicked[4].imageId[0].imageUrl
+              <div className="w-full h-full rounded-xl overflow-hidden">
+                <img
+                  src={
+                    props.data !== undefined
+                    ? props.data[4].imageUrl
                     : ""
                 }
                 alt="Most Picked"
+                className="w-full h-full object-cover transition-all duration-300  scale-110 hover:scale-100"
               />
-               <div className="w-full h-full card bg-black opacity-0 hover:opacity-50 absolute top-0 left-0 transition-all duration-300 z-5"></div>
+              </div>
               <div className="z-10 absolute bottom-4 left-4 text-white">
                 <p className="font-regular text-xl">
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[4].title
+                  {props.data !== undefined
+                    ? props.data[4].name
                     : ""}
                 </p>
                 <p className="font-ligth text-sm">
-                  {props.mostPicked !== undefined
-                    ? props.mostPicked[4].state
+                  {props.data !== undefined
+                    ? props.data[4].country
                     : ""}
                 </p>
               </div>

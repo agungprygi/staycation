@@ -51,7 +51,7 @@ module.exports = {
       const testimonial = {
         _id: "asd1293uasdads1",
         imageUrl:
-          "https://res.cloudinary.com/duikqpux7/image/upload/v1724299916/f3rjnnplmlxpynsfcnyj.jpg",
+          "https://res.cloudinary.com/duikqpux7/image/upload/v1728968408/foto_keluarga_fygool.png",
         name: "Happy Family",
         rate: 4.55,
         content:
@@ -90,11 +90,11 @@ module.exports = {
       const testimonial = {
         _id: "asd1293uasdads1",
         imageUrl:
-          "https://res.cloudinary.com/duikqpux7/image/upload/v1724299916/ak0jzaaueb9aszb8qlme.jpg",
+          "https://res.cloudinary.com/duikqpux7/image/upload/v1728968537/foto_keluarga_1_yuiho5.png",
         name: "Happy Family",
         rate: 4.25,
         content:
-          "What a great trip with my family and I should try again and again next time soon...",
+          "As a wife I can pick a great trip with my own lovely family ... thank you!",
         familyName: "Angga",
         familyOccupation: "UI Designer",
       };
