@@ -1,5 +1,4 @@
 // import React from 'react'
-import StarIcon from './../assets/icons/ic_star.png'
 
 export default function Testimonial(props) {
   return (
@@ -11,8 +10,20 @@ export default function Testimonial(props) {
               {props.data.name}
             </h4>
             <div className='flex flex-row items-center'>
-              {Array.from({length: Math.round(props.data.rate)}, (_, index) => (
-                <img src={StarIcon} alt='star' className='w-6 h-6' key={index}/>
+            {[1, 2, 3, 4, 5].map((star) => (
+                <div key={star} className="relative w-6 h-6">
+                  <div className="mask mask-star bg-gray-300 w-6 h-6 absolute"></div>
+                  <div 
+                    className="mask mask-star bg-yellow-400 w-6 h-6 absolute"
+                    style={{
+                      clipPath: star <= Math.floor(props.data.rate) 
+                        ? 'inset(0 0 0 0)' 
+                        : star === Math.ceil(props.data.rate)
+                        ? `inset(0 ${100 - (props.data.rate % 1) * 100}% 0 0)`
+                        : 'inset(0 100% 0 0)'
+                    }}
+                  ></div>
+                </div>
               ))}
             </div>
             <p className='text-3xl font-medium'>
