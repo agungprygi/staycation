@@ -1,26 +1,32 @@
-import { Component } from 'react'
-import Header from '../components/Header'
-import Testimonial from '../components/Testimonial'
-import Footer from '../components/Footer'
-import itemDetails from '../json/itemDetails.json'
+import { Component } from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Testimonial from '../components/Testimonial';
+import itemDetails from '../json/itemDetails.json';
 
-
-export default class DetailPage extends Component {
-    constructor(){
-      super()
+class DetailPage extends Component {
+    state = {
+        value: ""
+    };
+    handleOnChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
     }
-  
+
+    constructor() {
+        super();
+    }
+
     render() {
-      return (
-          <div>
-              <Header></Header>
-              <hr />
-              
-              <Testimonial data={itemDetails.testimonial}/>
-              <hr/>
-              <Footer/>
-          </div>
-      )
+        return (
+            <div>
+                <Header />
+                <hr />
+                <Testimonial data={itemDetails.testimonial}/>
+                <hr />
+                <Footer />
+            </div>
+        );
     }
-  }
-  
+}
+
+export default DetailPage;

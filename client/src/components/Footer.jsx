@@ -91,7 +91,7 @@ export default function Footer() {
       </div>
       <div className="text-center my-12">
         <p className="text-gray-400 font-light">
-          2024 Staycation, All Rights Reserved
+          {new Date().getFullYear()} Staycation, All Rights Reserved
         </p>
       </div>
     </footer>
