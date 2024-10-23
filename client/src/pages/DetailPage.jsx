@@ -3,15 +3,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Testimonial from '../components/Testimonial';
 import itemDetails from '../json/itemDetails.json';
+import BookingForm from '../components/BookingForm';
 
 class DetailPage extends Component {
-    state = {
-        value: ""
-    };
-    handleOnChange = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-    }
-
     constructor() {
         super();
     }
@@ -21,7 +15,9 @@ class DetailPage extends Component {
             <div>
                 <Header />
                 <hr />
+                <BookingForm data={itemDetails}/>
                 <Testimonial data={itemDetails.testimonial}/>
+                
                 <hr />
                 <Footer />
             </div>
