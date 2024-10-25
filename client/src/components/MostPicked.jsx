@@ -1,13 +1,15 @@
 // import {React, useRef} from "react";
+import {Fade} from "react-awesome-reveal";
 
 export default function MostPicked(props) {
   const mostPickedRef = props.innerRef;
   return (
     <section className="container mx-auto pt-4 md:px-40 px-4 font-poppins" ref={mostPickedRef}>
-      <h4 className="text-xl font-semibold md:mt-16 mt-4 text-start">
+      <h4 className="text-xl font-semibold md:mt-16 mt-4 text-start text-secondary">
         Most Picked
       </h4>
       <div className="grid md:grid-cols-3 grid-cols-1 gap-4 md:gap-8 mt-5">
+        <Fade direction="up">
         <div className="md:col-span-1 col-span-1">
           <div className="w-full h-full card">
             <div className="z-10 absolute top-0 right-0 text-white">
@@ -201,7 +203,8 @@ export default function MostPicked(props) {
             </div>
           </div>
         </div>
-      </div>
+        </Fade>
+        </div>
     </section>
   );
 }

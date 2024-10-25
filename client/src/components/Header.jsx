@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 export default function Header() {
   const location = useLocation();
@@ -12,9 +12,9 @@ export default function Header() {
       <div className="container mx-auto font-poppins md:px-40 px-4">
         <div className="navbar bg-base-100 px-0">
           <div className="flex-1">
-            <a className="text-2xl font-medium text-primary">
-              Stay<span className="text-gray-900">cation.</span>
-            </a>
+            <Link className="text-2xl font-medium text-primary" to="/">
+              Stay<span className="text-secondary">cation.</span>
+            </Link>
           </div>
           <div className="md:hidden">
             <details className="dropdown dropdown-end">
