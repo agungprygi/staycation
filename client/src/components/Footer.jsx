@@ -4,14 +4,14 @@ export default function Footer() {
       <div className="flex flex-row justify-between">
         <div className="flex flex-col">
           <a className="text-2xl font-medium text-primary">
-            Stay<span className="text-gray-900">cation.</span>
+            Stay<span className="text-secondary">cation.</span>
           </a>
           <p className="text-gray-400 font-light">
           We kaboom your beauty holiday <br/> instantly and memorable.
           </p>
         </div>
         <div className="flex flex-col">
-          <h4 className="text-2xl font-semibold mb-6">For Beginners</h4>
+          <h4 className="text-2xl font-semibold mb-6 text-secondary">For Beginners</h4>
           <ul className="list-none">
             <li className="mb-2">
               <a href="#">
@@ -37,7 +37,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="flex flex-col">
-          <h4 className="text-2xl font-semibold mb-6">Explore Us</h4>
+          <h4 className="text-2xl font-semibold mb-6 text-secondary">Explore Us</h4>
           <ul className="list-none">
             <li className="mb-2">
               <a href="#">
@@ -63,7 +63,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="flex flex-col">
-          <h4 className="text-2xl font-semibold mb-6">Connect With Us</h4>
+          <h4 className="text-2xl font-semibold mb-6 text-secondary">Connect With Us</h4>
           <ul className="list-none">
             <li className="mb-2">
               <a href="#">

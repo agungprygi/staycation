@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Fade } from 'react-awesome-reveal';
 import { PropTypes } from 'prop-types';
 import { DateRange } from 'react-date-range';
 import formatDate from '../utils/formatDate';
@@ -41,8 +42,8 @@ function Numbers(props){
                     -
                 </span>
             </div>
-            <input className="bg-gray-100 px-3 py-2 text-center min-h-11" min={min} max={max} name={name} pattern="[0-9]*" placeholder={placeholder ? placeholder : 0} value={String(inputValue)} onChange={onChange}/>
-            <div className="w-11 h-11 cursor-pointer text-white p-0 rounded-lg text-2xl flex justify-center items-center select-none bg-teal-600" onClick={plus}>
+            <input className="bg-gray-100 px-3 py-2 text-center min-h-11 w-full" min={min} max={max} name={name} pattern="[0-9]*" placeholder={placeholder ? placeholder : 0} value={String(inputValue)} onChange={onChange}/>
+            <div className="w-11 h-11 cursor-pointer text-white p-4 rounded-lg text-2xl flex justify-center items-center select-none bg-teal-600" onClick={plus}>
                 +
             </div>
         </div>
@@ -132,22 +133,32 @@ export default function BookingForm(props) {
           });
     }
 
-    return <div className=' w-full py-16 px-20 rounded-2xl border-gray-100 border-2'>
-        <h2 className='text-xl font-semibold'>Start Booking</h2>
-        <p className='text-teal-500 font-semibold text-4xl'>$ {props.data.price} <span className='text-gray-300 font-light'>per {props.data.unit}</span></p>
-        <div className='mt-4'>
-            <p className='font-medium'>How long you will stay?</p>
-            <Numbers value={stateNumber.value} onChange={handleOnChangeNumber} name="value" max={30} suffix={` ${props.data.unit}`}/>
-        </div>
-        <div className='mt-4'>
-            <p className='font-medium'>Pick a date</p>
-            <DatePicker value={stateDate.value} onChange={handleOnChangeDate} name="value" />
-        </div>
-        <div className='mt-4'>
-          <p className='text-gray-300'>You will pay <span className='text-primary font-semibold'>$ {stateNumber.value * props.data.price}</span> per <span className='text-primary'>{stateNumber.value} {props.data.unit}</span></p>
-        </div>
-        <a href="#" className='bg-primary text-white px-11 py-2 rounded-lg w-full block text-center mt-10 font-semibold'>Continue to Book</a>
-    </div>
+    return (
+      <Fade direction="up">
+          <div className=' w-full py-16 px-20 rounded-2xl border-gray-100 border-2'>
+              <h2 className='text-xl font-semibold'>Start Booking</h2>
+              <p className='text-teal-500 font-semibold text-4xl'>$ {props.data.price} <span
+                className='text-gray-300 font-light'>per {props.data.unit}</span></p>
+              <div className='mt-4'>
+                  <p className='font-medium'>How long you will stay?</p>
+                  <Numbers value={stateNumber.value} onChange={handleOnChangeNumber} name="value" max={30}
+                           suffix={` ${props.data.unit}`}/>
+              </div>
+              <div className='mt-4'>
+                  <p className='font-medium'>Pick a date</p>
+                  <DatePicker value={stateDate.value} onChange={handleOnChangeDate} name="value"/>
+              </div>
+              <div className='mt-4'>
+                  <p className='text-gray-300'>You will pay <span
+                    className='text-primary font-semibold'>$ {stateNumber.value * props.data.price}</span> per <span
+                    className='text-primary'>{stateNumber.value} {props.data.unit}</span></p>
+              </div>
+              <a href="#"
+                 className='bg-primary text-white px-11 py-2 rounded-lg w-full block text-center mt-10 font-semibold'>Continue
+                  to Book</a>
+          </div>
+      </Fade>
+    )
 }
 
 Numbers.defaultProps = {

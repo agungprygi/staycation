@@ -1,4 +1,5 @@
 // import React from "react";
+import {Fade} from "react-awesome-reveal";
 import ImageHero from "./../assets/banner.png";
 import TravelIcon from "./../assets/icons/ic_traveler.png";
 import CameraIcon from "./../assets/icons/ic_treasure.png";
@@ -38,12 +39,13 @@ export default function Hero(props) {
   } else {
     return (
       <section className="container mx-auto pt-4 md:px-40 px-4 font-poppins">
+        <Fade direction="up">
         <div className="hero h-1/3 w-full">
           <div className="md:flex flex-row-reverse justify-between items-center w-full">
             <img src={ImageHero} className="md:w-1/2" />
             <div className="md:w-5/12 flex flex-col">
               <div>
-                <h1 className="text-5xl font-bold">
+                <h1 className="text-5xl font-bold text-secondary">
                   Forget Busy Work, Start Next Vacation
                 </h1>
                 <p className="py-6 text-gray-400">
@@ -58,7 +60,7 @@ export default function Hero(props) {
                 <div className="md:flex-1">
                   <img src={TravelIcon} alt="Treasure" className="w-10" />
                   <div>
-                    <p className="font-medium">
+                    <p className="font-medium text-secondary">
                       {props.data.travelers.toLocaleString()}
                       <span className="font-light text-gray-500">
                         {" "}travelers
@@ -69,7 +71,7 @@ export default function Hero(props) {
                 <div className="md:flex-1">
                   <img src={CameraIcon} alt="Treasure" className="w-10" />
                   <div>
-                    <p className="font-medium">
+                    <p className="font-medium text-secondary">
                       {props.data.treasures.toLocaleString()}
                       <span className="font-light text-gray-500">
                       {" "} treasure
@@ -80,7 +82,7 @@ export default function Hero(props) {
                 <div className="md:flex-1">
                   <img src={LocationIcon} alt="Treasure" className="w-10" />
                   <div>
-                    <p className="font-medium">
+                    <p className="font-medium text-secondary">
                       {props.data.cities.toLocaleString()}
                       <span className="font-light text-gray-500">
                       {" "} cities
@@ -92,7 +94,8 @@ export default function Hero(props) {
             </div>
           </div>
         </div>
-      </section>
+        </Fade>
+        </section>
     );
   }
 }
